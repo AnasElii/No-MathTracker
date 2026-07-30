@@ -1,8 +1,9 @@
-//task_manager.h
+// task_manager.h
 #pragma once
 
 #include <iostream>
 
-namespace TaskManager{
+namespace ProgressTracker
+{
     void do_something();
 }

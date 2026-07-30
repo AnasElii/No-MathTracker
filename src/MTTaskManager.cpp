@@ -1,7 +1,7 @@
 // task_manager.cpp
-#include "task_manager.h"
+#include "MTTaskManager.h"
 
-namespace TaskManager
+namespace ProgressTracker
 {
     void do_something()
     {
