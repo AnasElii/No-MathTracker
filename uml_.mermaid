@@ -1,0 +1,48 @@
+classDiagram
+    %% Core Data Model
+    class Task {
+        +String name
+        +String startDate
+        +int timeBudgetMinutes
+        +int timeSpentMinutes
+        +int completedSteps
+        +int totalSteps
+        +float getProgressPercentage()
+        +int getRemainingTime()
+        +bool isOverBudget()
+        +void addTime(int minutes)
+        +void updateProgress(int completed)
+    }
+
+    %% Business Logic / Controller
+    class TaskManager {
+        -std::vector~Task~ tasks
+        -FileStorage storage
+        +void loadTasks()
+        +void saveTasks()
+        +void addTask(Task t)
+        +void updateTaskProgress(String name, int completed)
+        +Task getTask(String name)
+        +std::vector~Task~ getAllTasks()
+    }
+
+    %% Persistence Layer
+    class FileStorage {
+        -String filePath
+        +std::vector~Task~ readJSON()
+        +void writeJSON(std::vector~Task~ tasks)
+    }
+
+    %% Slint GUI Integration Layer
+    class SlintBridge {
+        -TaskManager* manager
+        -slint::ComponentHandle ui_handle
+        +void initialize()
+        +void setupCallbacks()
+        +void syncModelsToUI()
+    }
+
+    %% Relationships
+    TaskManager "1" *-- "*" Task : manages
+    TaskManager "1" --> "1" FileStorage : uses for persistence
+    SlintBridge "1" --> "1" TaskManager : invokes logic
