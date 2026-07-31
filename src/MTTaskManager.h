@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace ProgressTracker
+namespace MTTracker
 {
     void do_something();
 }

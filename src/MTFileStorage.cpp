@@ -1,7 +1,7 @@
 // task_manager.cpp
 #include "MTFileStorage.h"
 
-namespace ProgressTracker
+namespace MTTracker
 {
     void do_something()
     {
