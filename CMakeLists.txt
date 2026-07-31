@@ -37,4 +37,4 @@ FetchContent_MakeAvailable(Slint)
 add_executable(${CMAKE_PROJECT_NAME} main.cpp)
 
 # ====== Link the library ======
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE PROGRESS_SRC)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE MTTracker)

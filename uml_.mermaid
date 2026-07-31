@@ -18,32 +18,32 @@ classDiagram
 
     %% Core Data Model
     class Task {
-        +String topic
-        +TaskStatus status
-        +MasteryLevel masteryLevel
-        +Date startDate
-        +Date targetCompletionDate
-        +int plannedDurationDays
-        +Date actualCompletionDate
-        +String positionOrExercises
-        +String notesAndReflections
-        +int completedSteps
-        +int totalSteps
-        +float getProgressPercentage()
+        -String topic
+        -TaskStatus status
+        -MasteryLevel masteryLevel
+        -Date startDate
+        -Date targetCompletionDate
+        -Date actualCompletionDate
+        -int plannedDurationDays
+        -String positionOrExercises
+        -String notesAndReflections
         +int getRemainingDays()
         +bool isOverBudget()
         +void addTime(int minutes)
-        +void updateProgress(int completed)
         +void markCompleted()
     }
 
     %% Business Logic / Controller
     class TaskManager {
         -std::vector~Task~ tasks
+        -int completedSteps
+        -int totalSteps
         -FileStorage storage
         +void loadTasks()
         +void saveTasks()
         +void addTask(Task t)
+        +float getProgressPercentage()
+        +void updateProgress(int completed)
         +void updateTaskProgress(String topic, int completedSteps)
         +void updateMastery(String topic, MasteryLevel level)
         +Task getTask(String topic)
